@@ -17,26 +17,6 @@ import SwiftSyntaxMacros
 /// }()
 /// ```
 ///
-/// The macro can also accept a message it uses in the fatalError()
-///
-/// For example, the expression
-/// ```
-/// let x = #unwrapOrDie(y,
-///                      message: "some reason")
-/// ```
-///
-/// expands to:
-///
-///
-/// ```
-/// {
-///   guard let x = y else {
-///     fatalError("some reason")
-///   }
-///   return x
-/// }()
-/// ```
-///
 public struct UnwrapOrDieMacro: ExpressionMacro {
   public static func expansion(
     of node: some FreestandingMacroExpansionSyntax,
@@ -68,25 +48,6 @@ public struct UnwrapOrDieMacro: ExpressionMacro {
         """
   }
 }
-
-//func astVersion<T>(optional: T,
-//                   reason: String) -> ExprSyntax {
-//  ExprSyntax( 
-//    FunctionCallExprSyntax(calledExpression:
-//        ClosureExprSyntax(statements:
-//            CodeBlockItemListSyntax(arrayLiteral:
-//               CodeBlockItemSyntax(
-//                  try? GuardStmtSyntax("let x = y") {
-//                    """
-//                    fatalError("\(raw: reason)")
-//                    """
-//                  })!,
-//               CodeBlockItemSyntax( /* return statement */)
-//            )
-//        ),
-//                           arguments:  LabeledExprListSyntax()))
-//  
-//}
 
 @main
 struct UnwrapOrDiePlugin: CompilerPlugin {
