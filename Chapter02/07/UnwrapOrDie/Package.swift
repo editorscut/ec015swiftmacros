@@ -5,17 +5,17 @@ import PackageDescription
 import CompilerPluginSupport
 
 let package = Package(
-  name: "SampleMacro",
+  name: "UnwrapOrDie",
   platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .watchOS(.v6), .macCatalyst(.v13)],
   products: [
     // Products define the executables and libraries a package produces, making them visible to other packages.
     .library(
-      name: "SampleMacro",
-      targets: ["SampleMacro"]
+      name: "UnwrapOrDie",
+      targets: ["UnwrapOrDie"]
     ),
     .executable(
-      name: "SampleMacroClient",
-      targets: ["SampleMacroClient"]
+      name: "UnwrapOrDieClient",
+      targets: ["UnwrapOrDieClient"]
     ),
   ],
   dependencies: [
@@ -27,7 +27,7 @@ let package = Package(
     // Targets can depend on other targets in this package and products from dependencies.
     // Macro implementation that performs the source transformation of a macro.
     .macro(
-      name: "SampleMacroMacros",
+      name: "UnwrapOrDieMacros",
       dependencies: [
         .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
         .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
@@ -35,16 +35,16 @@ let package = Package(
     ),
     
     // Library that exposes a macro as part of its API, which is used in client programs.
-    .target(name: "SampleMacro", dependencies: ["SampleMacroMacros"]),
+    .target(name: "UnwrapOrDie", dependencies: ["UnwrapOrDieMacros"]),
     
     // A client of the library, which is able to use the macro in its own code.
-    .executableTarget(name: "SampleMacroClient", dependencies: ["SampleMacro"]),
+    .executableTarget(name: "UnwrapOrDieClient", dependencies: ["UnwrapOrDie"]),
     
     // A test target used to develop the macro implementation.
     .testTarget(
-      name: "SampleMacroTests",
+      name: "UnwrapOrDieTests",
       dependencies: [
-        "SampleMacroMacros",
+        "UnwrapOrDieMacros",
         .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax"),
       ]
     ),

@@ -1,4 +1,4 @@
-import SampleMacro
+import Sample
 
 let a = 17
 let b = 25
