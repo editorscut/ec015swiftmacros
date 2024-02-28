@@ -5,4 +5,4 @@ let exampleURL = #URLOrDie("http://example.com")
 
 print("exampleURL = \(exampleURL)")
 
-let invalidURL = #URLOrDie("http://example .com")
+//let invalidURL = #URLOrDie("http://example .com")

@@ -58,3 +58,10 @@ struct UnwrapOrDiePlugin: CompilerPlugin {
 
 
 
+struct SomeMacro: DeclarationMacro {
+  static func expansion(of node: some SwiftSyntax.FreestandingMacroExpansionSyntax, in context: some SwiftSyntaxMacros.MacroExpansionContext) throws -> [SwiftSyntax.DeclSyntax] {
+    <#code#>
+  }
+  
+  
+}

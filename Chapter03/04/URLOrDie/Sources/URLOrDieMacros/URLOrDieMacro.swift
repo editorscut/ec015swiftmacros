@@ -21,8 +21,8 @@ public struct URLOrDieMacro: ExpressionMacro {
                                     .as(StringLiteralExprSyntax.self)?
                                     .representedLiteralValue,
                                 message: "Argument must be a String literal")
-//      let _ = #unwrapOrDie(URL(string: string),
-//                           message: "Invalid URL")
+      let _ = #unwrapOrDie(URL(string: string),
+                           message: "Invalid URL")
       return """
         URL(string: "\(raw: string)")!
         """
